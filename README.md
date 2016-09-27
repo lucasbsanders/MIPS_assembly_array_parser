@@ -25,11 +25,7 @@ if( A[i] < min && A[i]>0 ) {
 
 min = A[i];
 
-minIndex = i;
-
-}
-
-}
+minIndex = i;	}	}
 
 printf("Index of the smallest positive number: %d\n", minIndex);
 
@@ -45,19 +41,13 @@ if( A[i] > 0 ){
 
 B[j] = A[i];
 
-j++;
-
-}
+j++;	}
 
 else{
 
 C[k] = A[i];
 
-k++;
-
-}
-
-}
+k++;	}	}
 
 printf("Array B:");
 
