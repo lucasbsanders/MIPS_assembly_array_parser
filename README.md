@@ -2,7 +2,7 @@
 
 MIPS (a RISC instruction set architecture/assembly code) code made for CDA3101 at UF
 
-Simulates the following pseudocode:
+<b>Simulates the following pseudocode:</b>
 
 
 int A[18] = {89,19,91,-5,23,-67,31,46,-71,-14,-10,3,67,17,11,-18,43,-73};
