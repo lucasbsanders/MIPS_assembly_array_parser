@@ -1,5 +1,4 @@
 # On my honor, I have neither given nor received unauthorized aid on this assignment
-
 # Project 1 - CDA3101
 # Lucas Sanders
 
@@ -23,16 +22,19 @@ main:
 	
 #/*find the index of the smallest positive number in the array*/
 	
-LOOP_0		#for (i = 0; i < 18; i++) {
 	li t2,$0		#t2 is i, used as an iterator for this loop
-	s1 NEQ LOOP_0		#if( A[i] < min && A[i]>0 ) {
-	lw t0,t2(s0)		#min = A[i];
-	li s5,t2		#minIndex = i;
+LOOP_0		#for (i = 0; i < 18; i++) {
+	lw $t5,$t2($s0)		#load a temporary value with A[i]
+	slt $t6,
+	
+	NEQ LOOP_0		#if( A[i] < min && A[i]>0 ) {
+	lw $t0,$t2($s0)		#min = A[i];
+	li $s5,$t2		#minIndex = i;
 	
 IF_1		#skip to here if the if statement fails
 
-	
-	slti $t6,$t5,18 	#set t6 = 1 if t5 is less than 18
+	addi $t2,1		#iterate i plus 1
+	slti $t6,$t2,18 	#set t6 = 1 if i is less than 18
 	li $t7,1		#load t7 with the value 1
 	beq $t7,$t6,LOOP_0		#if t6 is 1, then loop back to the start of the for loop
 	
