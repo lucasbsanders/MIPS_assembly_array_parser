@@ -108,5 +108,8 @@ LOOP_3			 	#for (i = 0; i < 7; i++)
 	syscall
 	
 	li $t2,$0		#load t2 with value i=0 
-DONE 
-	eq $t2,$0,DONE		#loop infinitely to DONE when program is finished
+	
+exit:
+    	li $v0,10
+    	syscall             # exit
+
