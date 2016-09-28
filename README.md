@@ -1,6 +1,6 @@
 # project1_MIPS
 
-MIPS (a RISC instruction set architecture/assembly code) code made for CDA3101 at UF
+MIPS assembly code made for CDA3101 at UF
 
 <b>Simulates the following pseudocode:</b>
 
