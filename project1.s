@@ -49,6 +49,7 @@ ifo:				#skip to here if the if statement fails
 	la $a0, msg0		
 	li $v0, 4		#print the following: ("Index of the smallest positive number: ")	
 	syscall
+	srl $t1,$t1,2
 	add $a0, $t1, 0		
 	li $v0, 1 		#print the index	
 	syscall
@@ -70,6 +71,7 @@ loopw:
 	add $t6, $t3, $s1		#set t6 equal to the memory location B[j]
 	sw $t5, 0($t6)		#sets B[j] equal to A[i]
 	addi $t3, 4		#iterate (j plus 4)
+	j elso
 	
 ifw:				#else statement
 	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
@@ -77,7 +79,7 @@ ifw:				#else statement
 	add $t6, $t4, $s2		#set t6 equal to the memory location C[k]
 	sw $t5, 0($t6)		#sets C[k] equal to A[i]
 	addi $t4, 4		#iterate (k plus 4)
-
+elseo:
 	addi $t2, 4		#iterate (i plus 4)
 	slti $t6, $t2, 72 	#set t6 equal to 1 if i is less than 18 times 4
 	beq $t6, 1, loopw		#if t6 is 1, then loop back to the start of loopw
