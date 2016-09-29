@@ -22,8 +22,8 @@ main:
 	la $s1, arrayB		#load register s1 with address of array B
 	la $s2, arrayC		#load register s2 with address of array C
 	
-	li $t0, 100 		#load t0 with min = 100;
-	li $t1, 0 		#load t1 with minIndex = 0;
+	li $t0, 100 		#load t0 with min = 100
+	li $t1, 0 		#load t1 with minIndex = 0
 	li $t2, 0		#load t2 with value i=0 
 	li $t3, 0		#load t3 with value j=0 
 	li $t4, 0		#load t4 with value k=0
@@ -32,7 +32,7 @@ main:
 #/*find the index of the smallest positive number in the array*/
 	
 	li $t2, 0		#set t2 to 0. t2 is i, used as an iterator for this loop
-LOOP_0				#for (i = 0; i < 18; i++)
+LOOP_0				#for (i = 0 i < 18 i++)
 
 	lw $t5, $t2($s0)		#load a temporary value (t5) with A[i]
 	slt $t6, $t5, $t0		#load a temporary value (t6) with 1 if A[i] is less than min
@@ -40,8 +40,8 @@ LOOP_0				#for (i = 0; i < 18; i++)
 	and $t5, $t5, $t6		#AND value (t5) with the result of the two previous boolean statements
 	bne $t5, $1, IF_1		#skip the steps in the if statement if t5 (boolean within if statement) is not equal to one
 				#if( A[i] < min && A[i]>0 )
-	lw $t0, $t2($s0)		#sets min equal to A[i];
-	li $t1, $t2		#sets minIndex equal to i;
+	lw $t0, $t2($s0)		#sets min equal to A[i]
+	li $t1, $t2		#sets minIndex equal to i
 IF_1				#skip to here if the if statement fails
 
 	addi $t2, 1		#iterate (i plus 1)
@@ -63,12 +63,12 @@ LOOP_1				#for (i = 0 i < 18 i++)
 	bne $t5, $1, IF_2		#skip the steps in the "if" statement if t5 (boolean within if statement) is not equal to one
 				#if( A[i] > 0 )
 	lw $t5, $t2($s0)		#load a temporary value (t5) with A[i]
-	sw $t5, $t3($s1)		#sets B[j] equal to A[i];
+	sw $t5, $t3($s1)		#sets B[j] equal to A[i]
 	addi $t3, 1		#iterate (j plus 1)
 	
 IF_2				#else statement
 	lw $t5, $t2($s0)		#load a temporary value (t5) with A[i]
-	sw $t5, $t4($s2)		#sets C[k] equal to A[i];
+	sw $t5, $t4($s2)		#sets C[k] equal to A[i]
 	addi $t4, 1		#iterate (k plus 1)
 
 	addi $t2, 1		#iterate (i plus 1)
