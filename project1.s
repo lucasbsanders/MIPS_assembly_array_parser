@@ -43,7 +43,7 @@ loopo:
 	add $t1, $t2, 0		#sets minIndex equal to i
 ifo:				#skip to here if the if statement fails
 	addi $t2, 4		#iterate (i plus 4, for the size of a word)
-	slti $t6, $t2, 18 	#set temp value t6 to 1, if i is less than 18 times 4
+	slti $t6, $t2, 72 	#set temp value t6 to 1, if i is less than 18 times 4
 	beq $t6, 1 loopo		#if t6 is 1, then loop back to the start of loopo
 	
 	la $a0, msg0		
@@ -79,7 +79,7 @@ ifw:				#else statement
 	addi $t4, 4		#iterate (k plus 4)
 
 	addi $t2, 4		#iterate (i plus 4)
-	slti $t6, $t2, 18 	#set t6 equal to 1 if i is less than 18
+	slti $t6, $t2, 72 	#set t6 equal to 1 if i is less than 18 times 4
 	beq $t6, 1, loopw		#if t6 is 1, then loop back to the start of loopw
 	
 	la $a0, msg4
@@ -102,7 +102,7 @@ loopt:
 	syscall
 	
 	addi $t2, 4		#iterate (i plus 4)
-	slti $t6, $t2, 11		#set t6 equal to 1 if i is less than 11
+	slti $t6, $t2, 44		#set t6 equal to 1 if i is less than 11 times 4
 	beq $t6, 1, loopt		#if t6 is 1, then loop back to the start of loopt
 	
 	la $a0, msg4
@@ -125,7 +125,7 @@ loopf:
 	syscall
 	
 	addi $t2, 4		#iterate (i plus 4)
-	slti $t6, $t2, 7 		#set t6 equal to 1 if i is less than 7
+	slti $t6, $t2, 28 		#set t6 equal to 1 if i is less than 7 times 4
 	beq $t6, 1 loopf		#if t6 is 1, then loop back to the start of loopf
 
 	la $a0, msg4
