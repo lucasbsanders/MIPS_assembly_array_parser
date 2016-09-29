@@ -7,10 +7,10 @@
 arrayA: .word 89, 19, 91, -5, 23, -67, 31, 46, -71, -14, -10, 3, 67, 17, 11, -18, 43, -73		#load array A with its values
 arrayB: .word 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0		#load array B with its values
 arrayC: .word 0, 0, 0, 0, 0, 0, 0 		#load array C with its values
-msg0:	.asciiz "Index of the smallest positive number: %d\n"
+msg0:	.asciiz "Index of the smallest positive number: "
 msg1:	.asciiz "Array B:"
 msg2:	.asciiz "Array C:"
-msg3:	.asciiz " %dd"
+msg3:	.asciiz " "
 msg4:	.asciiz "\n"
 
 .text
@@ -46,8 +46,11 @@ ifo:				#skip to here if the if statement fails
 	slti $t6, $t2, 72 	#set temp value t6 to 1, if i is less than 18 times 4
 	beq $t6, 1 loopo		#if t6 is 1, then loop back to the start of loopo
 	
-	la $a0, msg0		#insert the minIndex into the printed statement
-	li $v0, 4 		#print the following: ("Index of the smallest positive number: %d\n", minIndex)	
+	la $a0, msg0		
+	li $v0, 4 		#print the following: ("Index of the smallest positive number: ")	
+	syscall
+	lw $a0, 0($t1)		
+	li $v0, 4 		#print the index	
 	syscall
 	
 #/*Transfer all positive numbers to array B and all negative numbers to array C*/
