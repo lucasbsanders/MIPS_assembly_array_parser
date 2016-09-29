@@ -57,7 +57,7 @@ IF_1				#skip to here if the if statement fails
 	li $t3, 0		#load t3 with value j=0 
 	li $t4, 0		#load t4 with value k=0
 	li $t2, 0		#t2 is i, used as an iterator for this loop
-LOOP_1				#for (i = 0; i < 18; i++)
+LOOP_1				#for (i = 0 i < 18 i++)
 	lw $t5, $t2($s0)		#load a temporary value (t5) with A[i]
 	slt $t5, $t5, $zero		#load a temporary value (t5) with 1 if A[i] is greater than 0
 	bne $t5, $1, IF_2		#skip the steps in the "if" statement if t5 (boolean within if statement) is not equal to one
@@ -75,11 +75,11 @@ IF_2				#else statement
 	slti $t6, $t2, 18 	#set t6 equal to 1 if i is less than 18
 	beq $1, $t6, LOOP_1		#if t6 is 1, then loop back to the start of LOOP_1
 	
-	la $a0, msg1		#print the following: ("Array B:")
+	la $a0, msg1		#print the following: ("Array B")
 	jal printf
 	
 	li $t2, 0		#t2 is i, used as an iterator for this loop
-LOOP_2			 	#for (i = 0; i < 11; i++){
+LOOP_2			 	#for (i = 0 i < 11 i++){
 	lw $t5, $t2($s1)		#load a temporary value (t5) with B[i]
 	la $a0, msg3		#print the following: (" %d", B[i])
 	mov $a1, $t5		#insert that temporary value into the print statement
@@ -89,14 +89,14 @@ LOOP_2			 	#for (i = 0; i < 11; i++){
 	slti $t6, $t2, 11 	#set t6 equal to 1 if i is less than 11
 	beq $1, $t6, LOOP_2		#if t6 is 1, then loop back to the start of LOOP_2
 	
-	la $a0, msg4            #print the following: ("\n:")
+	la $a0, msg4            #print the following: ("\n")
 	jal printf
 	
-	la $a0, msg2            #print the following: ("Array C:")
+	la $a0, msg2            #print the following: ("Array C")
 	jal printf
 	
 	li $t2, 0		#t2 is i, used as an iterator for this loop
-LOOP_3			 	#for (i = 0; i < 7; i++)
+LOOP_3			 	#for (i = 0 i < 7 i++)
 	lw $t5, $t2($s2)		#load a temporary value (t5) with C[i]
 	la $a0, msg3		#print the following: (" %d", C[i])
 	mov $a1, $t5		#insert that temporary value into the print statement
@@ -106,7 +106,7 @@ LOOP_3			 	#for (i = 0; i < 7; i++)
 	slti $t6, $t2, 7 		#set t6 equal to 1 if i is less than 7
 	beq $1, $t6, LOOP_2		#if t6 is 1, then loop back to the start of LOOP_3 
 
-	la $a0, msg4		#print the following: ("\n:")
+	la $a0, msg4		#print the following: ("\n")
 	jal printf
 	
 	li $t2, 0		#load t2 with value i=0 
