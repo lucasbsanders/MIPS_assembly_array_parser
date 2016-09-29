@@ -50,7 +50,7 @@ ifo:				#skip to here if the if statement fails
 	li $v0, 4 		#print the following: ("Index of the smallest positive number: ")	
 	syscall
 	lw $a0, 0($t1)		
-	li $v0, 4 		#print the index	
+	li $v0, 1 		#print the index	
 	syscall
 	
 #/*Transfer all positive numbers to array B and all negative numbers to array C*/
@@ -89,33 +89,44 @@ ifw:				#else statement
 loopt:
 	add $t6, $t2, $s1		#set t6 equal to the memory location B[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with B[i]
-	li $v0, msg3		#print the following: (" %d", B[i])
-	add $a0, $t5, 0		#insert that temporary value into the print statement
+	
+	la $a0, msg3		
+	li $v0, 4 		#print the following: (" ")	
+	syscall
+	lw $a0, 0($t5)		
+	li $v0, 1 		#print  B[i]	
 	syscall
 	
 	addi $t2, 4		#iterate (i plus 4)
 	slti $t6, $t2, 44 	#set t6 equal to 1 if i is less than 11 times 4
 	beq $t6, 1, loopt		#if t6 is 1, then loop back to the start of loopt
 	
-	li $v0, msg4            #print the following: ("\n")
+	la $a0, msg4
+	li $v0, 4		#print the following: ("\n")
 	syscall
 	
-	li $v0, msg2            #print the following: ("Array C")
+	la $a0, msg2
+	li $v0, 4		#print the following: ("Array C")
 	syscall
 	
 	li $t2, 0		#t2 is i, used as an iterator for this loop
 loopf:
 	add $t6, $t2, $s2		#set t6 equal to the memory location C[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with C[i]
-	li $v0, msg3		#print the following: (" %d", C[i])
-	add $a0, $t5, 0		#insert that temporary value into the print statement
+	
+	la $a0, msg3		
+	li $v0, 4 		#print the following: (" ")	
+	syscall
+	lw $a0, 0($t5)		
+	li $v0, 1 		#print  C[i]	
 	syscall
 	
 	addi $t2, 4		#iterate (i plus 4)
 	slti $t6, $t2, 28 		#set t6 equal to 1 if i is less than 7 times 4
 	beq $t6, 1 loopf		#if t6 is 1, then loop back to the start of loopf
 
-	li $v0, msg4		#print the following: ("\n")
+	la $a0, msg4
+	li $v0, 4		#print the following: ("\n")
 	syscall
 	
     	li $v0, 10
