@@ -42,12 +42,12 @@ loopo:
 	lw $t0, 0($t6)		#load the variable min with A[i]
 	add $t1, $t2, 0		#sets minIndex equal to i
 ifo:				#skip to here if the if statement fails
-	addi $t2, 4		#iterate (i plus 4, for the size of a word)
-	slti $t6, $t2, 72 	#set temp value t6 to 1, if i is less than 18 times 4
+	addi $t2, 1		#iterate (i plus 4, for the size of a word)
+	slti $t6, $t2, 18 	#set temp value t6 to 1, if i is less than 18 times 4
 	beq $t6, 1 loopo		#if t6 is 1, then loop back to the start of loopo
 	
 	la $a0, msg0		
-	li $v0, 4 		#print the following: ("Index of the smallest positive number: ")	
+	li $v0, 4		#print the following: ("Index of the smallest positive number: ")	
 	syscall
 	lw $a0, 0($t1)		
 	li $v0, 1 		#print the index	
@@ -69,17 +69,17 @@ loopw:
 	lw $t5, 0($t6)		#load a temporary value (t5) with A[i]
 	add $t6, $t3, $s1		#set t6 equal to the memory location B[j]
 	sw $t5, 0($t6)		#sets B[j] equal to A[i]
-	addi $t3, 4		#iterate (j plus 4)
+	addi $t3, 1		#iterate (j plus 1)
 	
 ifw:				#else statement
 	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with A[i]
 	add $t6, $t4, $s2		#set t6 equal to the memory location C[k]
 	sw $t5, 0($t6)		#sets C[k] equal to A[i]
-	addi $t4, 4		#iterate (k plus 4)
+	addi $t4, 1		#iterate (k plus 4)
 
-	addi $t2, 4		#iterate (i plus 4)
-	slti $t6, $t2, 72 	#set t6 equal to 1 if i is less than 18 times 4
+	addi $t2, 1		#iterate (i plus 4)
+	slti $t6, $t2, 18 	#set t6 equal to 1 if i is less than 18 times 4
 	beq $t6, 1, loopw		#if t6 is 1, then loop back to the start of loopw
 	
 	li $v0, 4		#print the following: ("Array B")
@@ -97,14 +97,13 @@ loopt:
 	li $v0, 1 		#print  B[i]	
 	syscall
 	
-	addi $t2, 4		#iterate (i plus 4)
-	slti $t6, $t2, 44 	#set t6 equal to 1 if i is less than 11 times 4
+	addi $t2, 1		#iterate (i plus 1)
+	slti $t6, $t2, 11		#set t6 equal to 1 if i is less than 11
 	beq $t6, 1, loopt		#if t6 is 1, then loop back to the start of loopt
 	
 	la $a0, msg4
 	li $v0, 4		#print the following: ("\n")
 	syscall
-	
 	la $a0, msg2
 	li $v0, 4		#print the following: ("Array C")
 	syscall
@@ -121,8 +120,8 @@ loopf:
 	li $v0, 1 		#print  C[i]	
 	syscall
 	
-	addi $t2, 4		#iterate (i plus 4)
-	slti $t6, $t2, 28 		#set t6 equal to 1 if i is less than 7 times 4
+	addi $t2, 1		#iterate (i plus 1)
+	slti $t6, $t2, 7 		#set t6 equal to 1 if i is less than 7
 	beq $t6, 1 loopf		#if t6 is 1, then loop back to the start of loopf
 
 	la $a0, msg4
