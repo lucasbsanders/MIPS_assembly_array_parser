@@ -50,7 +50,7 @@ ifo:				#skip to here if the if statement fails
 	
 	la $a0, msg0		#print the following: ("Index of the smallest positive number: %d\n", minIndex)
 	add $a1, $t1, 0		#insert the minIndex into the printed statement
-	jal printf
+	syscall
 	
 #/*Transfer all positive numbers to array B and all negative numbers to array C*/
 
@@ -82,7 +82,7 @@ ifw:				#else statement
 	beq $t6, 1, loopw		#if t6 is 1, then loop back to the start of loopw
 	
 	la $a0, msg1		#print the following: ("Array B")
-	jal printf
+	syscall
 	
 	li $t2, 0		#t2 is i, used as an iterator for this loop
 loopt:
@@ -90,17 +90,17 @@ loopt:
 	lw $t5, 0($t6)		#load a temporary value (t5) with B[i]
 	la $a0, msg3		#print the following: (" %d", B[i])
 	add $a1, $t5, 0		#insert that temporary value into the print statement
-	jal printf
+	syscall
 	
 	addi $t2, 4		#iterate (i plus 4)
 	slti $t6, $t2, 44 	#set t6 equal to 1 if i is less than 11 times 4
 	beq $t6, 1, loopt		#if t6 is 1, then loop back to the start of loopt
 	
 	la $a0, msg4            #print the following: ("\n")
-	jal printf
+	syscall
 	
 	la $a0, msg2            #print the following: ("Array C")
-	jal printf
+	syscall
 	
 	li $t2, 0		#t2 is i, used as an iterator for this loop
 loopf:
@@ -108,14 +108,14 @@ loopf:
 	lw $t5, 0($t6)		#load a temporary value (t5) with C[i]
 	la $a0, msg3		#print the following: (" %d", C[i])
 	add $a1, $t5, 0		#insert that temporary value into the print statement
-	jal printf
+	syscall
 	
 	addi $t2, 4		#iterate (i plus 4)
 	slti $t6, $t2, 28 		#set t6 equal to 1 if i is less than 7 times 4
 	beq $t6, 1 loopf		#if t6 is 1, then loop back to the start of loopf
 
 	la $a0, msg4		#print the following: ("\n")
-	jal printf
+	syscall
 	
     	li $v0, 10
     	syscall             # exit
