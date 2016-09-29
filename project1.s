@@ -34,8 +34,8 @@ loopo:
 	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with A[i]
 	slt $t6, $t5, $t0		#load a temporary value (t6) with 1 if A[i] is less than min
-	slt $t5, $t5, $zero		#load a temporary value (t5) with 1 if A[i] is greater than 0
-	and $t5, $t5, $t6		#AND value (t5) with the result of the two previous boolean statements
+	slt $t7, $zero, $t5		#load a temporary value (t7) with 1 if A[i] is greater than 0
+	and $t5, $t7, $t6		#AND value (t5) is the result of the two previous boolean statements
 	bne $t5, 1, ifo		#skip the steps in the if statement if t5 (boolean within if statement) is not equal to one
 	
 	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
@@ -44,7 +44,7 @@ loopo:
 ifo:				#skip to here if the if statement fails
 	addi $t2, 4		#iterate (i plus 4, for the size of a word)
 	slti $t6, $t2, 72 	#set temp value t6 to 1, if i is less than 18 times 4
-	beq $t6, 1 loopo		#if t6 is 1, then loop back to the start of loopo
+	beq $t6, 1, loopo		#if t6 is 1, then loop back to the start of loopo
 	
 	la $a0, msg0		
 	li $v0, 4		#print the following: ("Index of the smallest positive number: ")	
@@ -62,8 +62,8 @@ loopw:
 	
 	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with A[i]
-	slt $t5, $t5, $zero		#load a temporary value (t5) with 1 if A[i] is greater than 0
-	bne $t5, 1, ifw		#skip the steps in the "if" statement if t5 (boolean within if statement) is not equal to one
+	slt $t7, $zero, $t5		#load a temporary value (t5) with 1 if A[i] is greater than 0
+	bne $t7, 1, ifw		#skip the steps in the "if" statement if t5 (boolean within if statement) is not equal to one
 
 	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with A[i]
