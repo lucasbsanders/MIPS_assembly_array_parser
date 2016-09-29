@@ -4,7 +4,6 @@
 
 #data section
 .data
-.align 0
 arrayA: .word 89, 19, 91, -5, 23, -67, 31, 46, -71, -14, -10, 3, 67, 17, 11, -18, 43, -73		#load array A with its values
 arrayB: .word 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0		#load array B with its values
 arrayC: .word 0, 0, 0, 0, 0, 0, 0 		#load array C with its values
@@ -15,7 +14,6 @@ msg3:	.asciiz " %d"
 msg4:	.asciiz "\n"
 
 .text
-.align 2
 .globl main
 main:
 	la $s0, arrayA		#load register s0 with address of array A
@@ -48,8 +46,8 @@ ifo:				#skip to here if the if statement fails
 	slti $t6, $t2, 72 	#set temp value t6 to 1, if i is less than 18 times 4
 	beq $t6, 1 loopo		#if t6 is 1, then loop back to the start of loopo
 	
-	li $v0, msg0		#print the following: ("Index of the smallest positive number: %d\n", minIndex)
-	add $a0, $t1, 0		#insert the minIndex into the printed statement
+	add $a0, $t1, msg0		#insert the minIndex into the printed statement
+	li $v0, 4		#print the following: ("Index of the smallest positive number: %d\n", minIndex)	
 	syscall
 	
 #/*Transfer all positive numbers to array B and all negative numbers to array C*/
@@ -81,7 +79,7 @@ ifw:				#else statement
 	slti $t6, $t2, 72 	#set t6 equal to 1 if i is less than 18 times 4
 	beq $t6, 1, loopw		#if t6 is 1, then loop back to the start of loopw
 	
-	li $v0, msg1		#print the following: ("Array B")
+	li $v0, 4		#print the following: ("Array B")
 	syscall
 	
 	li $t2, 0		#t2 is i, used as an iterator for this loop
