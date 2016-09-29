@@ -42,14 +42,14 @@ loopo:
 	
 	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
 	lw $t0, 0($t6)		#load the variable min with A[i]
-	mov $t1, $t2		#sets minIndex equal to i
+	add $t1, $t2, 0		#sets minIndex equal to i
 ifo:				#skip to here if the if statement fails
 	addi $t2, 1		#iterate (i plus 1)
 	slti $t6, $t2, 18 	#set temp value t6 to 1, if i is less than 18
 	beq $t6, 1 loopo		#if t6 is 1, then loop back to the start of loopo
 	
 	la $a0, msg0		#print the following: ("Index of the smallest positive number: %d\n", minIndex)
-	mov $a1, $t1		#insert the minIndex into the printed statement
+	add $a1, $t1, 0		#insert the minIndex into the printed statement
 	jal printf
 	
 #/*Transfer all positive numbers to array B and all negative numbers to array C*/
@@ -88,7 +88,7 @@ loopt:
 	add $t6, $t2, $s1		#set t6 equal to the memory location B[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with B[i]
 	la $a0, msg3		#print the following: (" %d", B[i])
-	mov $a1, $t5		#insert that temporary value into the print statement
+	add $a1, $t5, 0		#insert that temporary value into the print statement
 	jal printf
 	
 	addi $t2, 1		#iterate (i plus 1)
@@ -106,7 +106,7 @@ loopf:
 	add $t6, $t2, $s2		#set t6 equal to the memory location C[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with C[i]
 	la $a0, msg3		#print the following: (" %d", C[i])
-	mov $a1, $t5		#insert that temporary value into the print statement
+	add $a1, $t5, 0		#insert that temporary value into the print statement
 	jal printf
 	
 	addi $t2, 1		#iterate (i plus 1)
