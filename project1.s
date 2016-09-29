@@ -44,8 +44,8 @@ loopo:
 	lw $t0, 0($t6)		#load the variable min with A[i]
 	add $t1, $t2, 0		#sets minIndex equal to i
 ifo:				#skip to here if the if statement fails
-	addi $t2, 1		#iterate (i plus 1)
-	slti $t6, $t2, 18 	#set temp value t6 to 1, if i is less than 18
+	addi $t2, 4		#iterate (i plus 4, for the size of a word)
+	slti $t6, $t2, 72 	#set temp value t6 to 1, if i is less than 18 times 4
 	beq $t6, 1 loopo		#if t6 is 1, then loop back to the start of loopo
 	
 	la $a0, msg0		#print the following: ("Index of the smallest positive number: %d\n", minIndex)
@@ -68,18 +68,18 @@ loopw:
 	lw $t5, 0($t6)		#load a temporary value (t5) with A[i]
 	add $t6, $t3, $s1		#set t6 equal to the memory location B[j]
 	sw $t5, 0($t6)		#sets B[j] equal to A[i]
-	addi $t3, 1		#iterate (j plus 1)
+	addi $t3, 4		#iterate (j plus 4)
 	
 ifw:				#else statement
 	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with A[i]
 	add $t6, $t4, $s2		#set t6 equal to the memory location C[k]
 	sw $t5, 0($t6)		#sets C[k] equal to A[i]
-	addi $t4, 1		#iterate (k plus 1)
+	addi $t4, 4		#iterate (k plus 4)
 
-	addi $t2, 1		#iterate (i plus 1)
-	slti $t6, $t2, 18 	#set t6 equal to 1 if i is less than 18
-	beq $t6, 1 loopw		#if t6 is 1, then loop back to the start of loopw
+	addi $t2, 4		#iterate (i plus 4)
+	slti $t6, $t2, 72 	#set t6 equal to 1 if i is less than 18 times 4
+	beq $t6, 1, loopw		#if t6 is 1, then loop back to the start of loopw
 	
 	la $a0, msg1		#print the following: ("Array B")
 	jal printf
@@ -92,9 +92,9 @@ loopt:
 	add $a1, $t5, 0		#insert that temporary value into the print statement
 	jal printf
 	
-	addi $t2, 1		#iterate (i plus 1)
-	slti $t6, $t2, 11 	#set t6 equal to 1 if i is less than 11
-	beq $t6, 1 loopt		#if t6 is 1, then loop back to the start of loopt
+	addi $t2, 4		#iterate (i plus 4)
+	slti $t6, $t2, 44 	#set t6 equal to 1 if i is less than 11 times 4
+	beq $t6, 1, loopt		#if t6 is 1, then loop back to the start of loopt
 	
 	la $a0, msg4            #print the following: ("\n")
 	jal printf
@@ -110,14 +110,12 @@ loopf:
 	add $a1, $t5, 0		#insert that temporary value into the print statement
 	jal printf
 	
-	addi $t2, 1		#iterate (i plus 1)
-	slti $t6, $t2, 7 		#set t6 equal to 1 if i is less than 7
+	addi $t2, 4		#iterate (i plus 4)
+	slti $t6, $t2, 28 		#set t6 equal to 1 if i is less than 7 times 4
 	beq $t6, 1 loopf		#if t6 is 1, then loop back to the start of loopf
 
 	la $a0, msg4		#print the following: ("\n")
 	jal printf
-	
-	li $t2, 0		#load t2 with value i=0 
 	
     	li $v0, 10
     	syscall             # exit
