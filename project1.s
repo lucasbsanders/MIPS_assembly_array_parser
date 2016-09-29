@@ -33,7 +33,6 @@ main:
 	
 	li $t2, 0		#set t2 to 0. t2 is i, used as an iterator for this loop
 LOOP0
-
 	lw $t5, $t2($s0)		#load a temporary value (t5) with A[i]
 	slt $t6, $t5, $t0		#load a temporary value (t6) with 1 if A[i] is less than min
 	slt $t5, $t5, $zero		#load a temporary value (t5) with 1 if A[i] is greater than 0
@@ -43,7 +42,6 @@ LOOP0
 	lw $t0, $t2($s0)		#sets min equal to A[i]
 	li $t1, $t2		#sets minIndex equal to i
 IF1				#skip to here if the if statement fails
-
 	addi $t2, 1		#iterate (i plus 1)
 	slti $t6, $t2, 18 	#set temp value t6 to 1, if i is less than 18
 	beq $1, $t6, LOOP0		#if t6 is 1, then loop back to the start of LOOP0
