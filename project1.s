@@ -49,10 +49,11 @@ ifo:				#skip to here if the if statement fails
 	la $a0, msg0		
 	li $v0, 4		#print the following: ("Index of the smallest positive number: ")	
 	syscall
-	srl $t1,$t1,2
+	srl $t1, $t1, 2
 	add $a0, $t1, 0		
 	li $v0, 1 		#print the index	
 	syscall
+	sll $t1, $t1, 2
 	
 #/*Transfer all positive numbers to array B and all negative numbers to array C*/
 
