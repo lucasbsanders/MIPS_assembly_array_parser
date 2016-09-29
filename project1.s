@@ -5,9 +5,9 @@
 #data section
 .data
 .align 0
-A: .word 89,19,91,-5,23,-67,31,46,-71,-14,-10,3,67,17,11,-18,43,-73		#load array A with its values
-B: .word 0,0,0,0,0,0,0,0,0,0,0		#load array B with its values
-C: .word 0,0,0,0,0,0,0 		#load array C with its values
+A: .word 89 19 91 -5 23 -67 31 46 -71 -14 -10 3 67 17 11 -18 43 -73		#load array A with its values
+B: .word 0 0 0 0 0 0 0 0 0 0 0		#load array B with its values
+C: .word 0 0 0 0 0 0 0 		#load array C with its values
 msg0:	.asciiz "Index of the smallest positive number: %d\n""
 msg1:	.asciiz "Array B:"
 msg2:	.asciiz "Array C:"
@@ -114,4 +114,3 @@ LOOP_3			 	#for (i = 0; i < 7; i++)
 exit:
     	li $v0,10
     	syscall             # exit
-
