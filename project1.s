@@ -111,6 +111,5 @@ LOOP_3			 	#for (i = 0; i < 7; i++)
 	
 	li $t2,$0		#load t2 with value i=0 
 	
-exit:
     	li $v0,10
     	syscall             # exit
