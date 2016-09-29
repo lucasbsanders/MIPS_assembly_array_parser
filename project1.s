@@ -59,7 +59,8 @@ ifo:				#skip to here if the if statement fails
 	li $t2, 0		#t2 is i, used as an iterator for this loop
 loopw:
 	
-	lw $t5, $t2($s0)		#load a temporary value (t5) with A[i]
+	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
+	lw $t5, 0($t6)		#load a temporary value (t5) with A[i]
 	slt $t5, $t5, $zero		#load a temporary value (t5) with 1 if A[i] is greater than 0
 	bne $t5, 1, ifw		#skip the steps in the "if" statement if t5 (boolean within if statement) is not equal to one
 
