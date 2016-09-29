@@ -38,7 +38,7 @@ loopo:
 	slt $t6, $t5, $t0		#load a temporary value (t6) with 1 if A[i] is less than min
 	slt $t5, $t5, $zero		#load a temporary value (t5) with 1 if A[i] is greater than 0
 	and $t5, $t5, $t6		#AND value (t5) with the result of the two previous boolean statements
-	bne $t5, $1, fIF		#skip the steps in the if statement if t5 (boolean within if statement) is not equal to one
+	bne $t5, $1, ifo		#skip the steps in the if statement if t5 (boolean within if statement) is not equal to one
 	
 	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
 	lw $t0, 0($t6)		#load the variable min with A[i]
