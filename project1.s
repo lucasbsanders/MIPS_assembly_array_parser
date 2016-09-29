@@ -106,7 +106,7 @@ loopt:
 loopf:
 	add $t6, $t2, $s2		#set t6 equal to the memory location C[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with C[i]
-	la v0, msg3		#print the following: (" %d", C[i])
+	la $v0, msg3		#print the following: (" %d", C[i])
 	add $a0, $t5, 0		#insert that temporary value into the print statement
 	syscall
 	
