@@ -82,6 +82,9 @@ ifw:				#else statement
 	slti $t6, $t2, 18 	#set t6 equal to 1 if i is less than 18
 	beq $t6, 1, loopw		#if t6 is 1, then loop back to the start of loopw
 	
+	la $a0, msg4
+	li $v0, 4		#print the following: ("\n")
+	syscall
 	la $a0, msg1
 	li $v0, 4		#print the following: ("Array B ")
 	syscall
