@@ -32,21 +32,21 @@ main:
 #/*find the index of the smallest positive number in the array*/
 	
 	li $t2, 0		#set t2 to 0. t2 is i, used as an iterator for this loop
-LOOP0
+loopo
 	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with A[i]
 	slt $t6, $t5, $t0		#load a temporary value (t6) with 1 if A[i] is less than min
 	slt $t5, $t5, $zero		#load a temporary value (t5) with 1 if A[i] is greater than 0
 	and $t5, $t5, $t6		#AND value (t5) with the result of the two previous boolean statements
-	bne $t5, $1, IF1		#skip the steps in the if statement if t5 (boolean within if statement) is not equal to one
+	bne $t5, $1, fIF		#skip the steps in the if statement if t5 (boolean within if statement) is not equal to one
 	
 	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
 	lw $t0, 0($t6)		#load the variable min with A[i]
 	li $t1, $t2		#sets minIndex equal to i
-IF1				#skip to here if the if statement fails
+ifo				#skip to here if the if statement fails
 	addi $t2, 1		#iterate (i plus 1)
 	slti $t6, $t2, 18 	#set temp value t6 to 1, if i is less than 18
-	beq $1, $t6, LOOP0		#if t6 is 1, then loop back to the start of LOOP0
+	beq $1, $t6, loopo		#if t6 is 1, then loop back to the start of loopo
 	
 	la $a0, msg0		#print the following: ("Index of the smallest positive number: %d\n", minIndex)
 	mov $a1, $t1		#insert the minIndex into the printed statement
@@ -57,11 +57,11 @@ IF1				#skip to here if the if statement fails
 	li $t3, 0		#load t3 with value j=0 
 	li $t4, 0		#load t4 with value k=0
 	li $t2, 0		#t2 is i, used as an iterator for this loop
-LOOP1
+loopw
 	
 	lw $t5, $t2($s0)		#load a temporary value (t5) with A[i]
 	slt $t5, $t5, $zero		#load a temporary value (t5) with 1 if A[i] is greater than 0
-	bne $t5, $1, IF2		#skip the steps in the "if" statement if t5 (boolean within if statement) is not equal to one
+	bne $t5, $1, ifw		#skip the steps in the "if" statement if t5 (boolean within if statement) is not equal to one
 
 	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with A[i]
@@ -69,7 +69,7 @@ LOOP1
 	sw $t5, 0($t6)		#sets B[j] equal to A[i]
 	addi $t3, 1		#iterate (j plus 1)
 	
-IF2				#else statement
+ifw				#else statement
 	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with A[i]
 	add $t6, $t4, $s2		#set t6 equal to the memory location C[k]
@@ -78,13 +78,13 @@ IF2				#else statement
 
 	addi $t2, 1		#iterate (i plus 1)
 	slti $t6, $t2, 18 	#set t6 equal to 1 if i is less than 18
-	beq $1, $t6, LOOP1		#if t6 is 1, then loop back to the start of LOOP1
+	beq $1, $t6, loopw		#if t6 is 1, then loop back to the start of loopw
 	
 	la $a0, msg1		#print the following: ("Array B")
 	jal printf
 	
 	li $t2, 0		#t2 is i, used as an iterator for this loop
-LOOP2
+loopt
 	add $t6, $t2, $s1		#set t6 equal to the memory location B[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with B[i]
 	la $a0, msg3		#print the following: (" %d", B[i])
@@ -93,7 +93,7 @@ LOOP2
 	
 	addi $t2, 1		#iterate (i plus 1)
 	slti $t6, $t2, 11 	#set t6 equal to 1 if i is less than 11
-	beq $1, $t6, LOOP2		#if t6 is 1, then loop back to the start of LOOP2
+	beq $1, $t6, loopt		#if t6 is 1, then loop back to the start of loopt
 	
 	la $a0, msg4            #print the following: ("\n")
 	jal printf
@@ -102,7 +102,7 @@ LOOP2
 	jal printf
 	
 	li $t2, 0		#t2 is i, used as an iterator for this loop
-LOOP3
+loopf
 	add $t6, $t2, $s2		#set t6 equal to the memory location C[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with C[i]
 	la $a0, msg3		#print the following: (" %d", C[i])
@@ -111,7 +111,7 @@ LOOP3
 	
 	addi $t2, 1		#iterate (i plus 1)
 	slti $t6, $t2, 7 		#set t6 equal to 1 if i is less than 7
-	beq $1, $t6, LOOP2		#if t6 is 1, then loop back to the start of LOOP3 
+	beq $1, $t6, loopf		#if t6 is 1, then loop back to the start of loopf
 
 	la $a0, msg4		#print the following: ("\n")
 	jal printf
