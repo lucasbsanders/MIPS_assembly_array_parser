@@ -42,7 +42,7 @@ loopo:
 	
 	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
 	lw $t0, 0($t6)		#load the variable min with A[i]
-	li $t1, $t2		#sets minIndex equal to i
+	mov $t1, $t2		#sets minIndex equal to i
 ifo:				#skip to here if the if statement fails
 	addi $t2, 1		#iterate (i plus 1)
 	slti $t6, $t2, 18 	#set temp value t6 to 1, if i is less than 18
