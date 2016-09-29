@@ -46,7 +46,7 @@ ifo:				#skip to here if the if statement fails
 	slti $t6, $t2, 72 	#set temp value t6 to 1, if i is less than 18 times 4
 	beq $t6, 1 loopo		#if t6 is 1, then loop back to the start of loopo
 	
-	add $a0, $t1, msg0		#insert the minIndex into the printed statement
+	addi $a0, $t1, msg0		#insert the minIndex into the printed statement
 	li $v0, 4		#print the following: ("Index of the smallest positive number: %d\n", minIndex)	
 	syscall
 	
