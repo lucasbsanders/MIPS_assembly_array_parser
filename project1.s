@@ -72,7 +72,7 @@ loopw:
 	add $t6, $t3, $s1		#set t6 equal to the memory location B[j]
 	sw $t5, 0($t6)		#sets B[j] equal to A[i]
 	addi $t3, 4		#iterate (j plus 4)
-	j elso
+	j elseo
 	
 ifw:				#else statement
 	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
