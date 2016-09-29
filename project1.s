@@ -8,8 +8,8 @@ arrayA: .word 89, 19, 91, -5, 23, -67, 31, 46, -71, -14, -10, 3, 67, 17, 11, -18
 arrayB: .word 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0		#load array B with its values
 arrayC: .word 0, 0, 0, 0, 0, 0, 0 		#load array C with its values
 msg0:	.asciiz "Index of the smallest positive number: "
-msg1:	.asciiz "Array B:"
-msg2:	.asciiz "Array C:"
+msg1:	.asciiz "Array B: "
+msg2:	.asciiz "Array C: "
 msg3:	.asciiz " "
 msg4:	.asciiz "\n"
 
@@ -49,7 +49,7 @@ ifo:				#skip to here if the if statement fails
 	la $a0, msg0		
 	li $v0, 4		#print the following: ("Index of the smallest positive number: ")	
 	syscall
-	lw $a0, 0($t1)		
+	add $a0, $t1, 0		
 	li $v0, 1 		#print the index	
 	syscall
 	
@@ -82,7 +82,8 @@ ifw:				#else statement
 	slti $t6, $t2, 18 	#set t6 equal to 1 if i is less than 18
 	beq $t6, 1, loopw		#if t6 is 1, then loop back to the start of loopw
 	
-	li $v0, 4		#print the following: ("Array B")
+	la $a0, msg1
+	li $v0, 4		#print the following: ("Array B ")
 	syscall
 	
 	li $t2, 0		#t2 is i, used as an iterator for this loop
@@ -93,7 +94,7 @@ loopt:
 	la $a0, msg3		
 	li $v0, 4 		#print the following: (" ")	
 	syscall
-	lw $a0, 0($t5)		
+	add $a0, $t5, 0
 	li $v0, 1 		#print  B[i]	
 	syscall
 	
@@ -105,7 +106,7 @@ loopt:
 	li $v0, 4		#print the following: ("\n")
 	syscall
 	la $a0, msg2
-	li $v0, 4		#print the following: ("Array C")
+	li $v0, 4		#print the following: ("Array C ")
 	syscall
 	
 	li $t2, 0		#t2 is i, used as an iterator for this loop
@@ -116,7 +117,7 @@ loopf:
 	la $a0, msg3		
 	li $v0, 4 		#print the following: (" ")	
 	syscall
-	lw $a0, 0($t5)		
+	add $a0, $t5, 0		
 	li $v0, 1 		#print  C[i]	
 	syscall
 	
