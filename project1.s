@@ -32,14 +32,14 @@ main:
 #/*find the index of the smallest positive number in the array*/
 	
 	li $t2, 0		#set t2 to 0. t2 is i, used as an iterator for this loop
-LOOP_0				#for (i = 0 i < 18 i++)
+LOOP_0
 
 	lw $t5, $t2($s0)		#load a temporary value (t5) with A[i]
 	slt $t6, $t5, $t0		#load a temporary value (t6) with 1 if A[i] is less than min
 	slt $t5, $t5, $zero		#load a temporary value (t5) with 1 if A[i] is greater than 0
 	and $t5, $t5, $t6		#AND value (t5) with the result of the two previous boolean statements
 	bne $t5, $1, IF_1		#skip the steps in the if statement if t5 (boolean within if statement) is not equal to one
-				#if( A[i] < min && A[i]>0 )
+
 	lw $t0, $t2($s0)		#sets min equal to A[i]
 	li $t1, $t2		#sets minIndex equal to i
 IF_1				#skip to here if the if statement fails
@@ -57,11 +57,11 @@ IF_1				#skip to here if the if statement fails
 	li $t3, 0		#load t3 with value j=0 
 	li $t4, 0		#load t4 with value k=0
 	li $t2, 0		#t2 is i, used as an iterator for this loop
-LOOP_1				#for (i = 0 i < 18 i++)
+LOOP_1
 	lw $t5, $t2($s0)		#load a temporary value (t5) with A[i]
 	slt $t5, $t5, $zero		#load a temporary value (t5) with 1 if A[i] is greater than 0
 	bne $t5, $1, IF_2		#skip the steps in the "if" statement if t5 (boolean within if statement) is not equal to one
-				#if( A[i] > 0 )
+
 	lw $t5, $t2($s0)		#load a temporary value (t5) with A[i]
 	sw $t5, $t3($s1)		#sets B[j] equal to A[i]
 	addi $t3, 1		#iterate (j plus 1)
@@ -79,7 +79,7 @@ IF_2				#else statement
 	jal printf
 	
 	li $t2, 0		#t2 is i, used as an iterator for this loop
-LOOP_2			 	#for (i = 0 i < 11 i++){
+LOOP_2
 	lw $t5, $t2($s1)		#load a temporary value (t5) with B[i]
 	la $a0, msg3		#print the following: (" %d", B[i])
 	mov $a1, $t5		#insert that temporary value into the print statement
@@ -96,7 +96,7 @@ LOOP_2			 	#for (i = 0 i < 11 i++){
 	jal printf
 	
 	li $t2, 0		#t2 is i, used as an iterator for this loop
-LOOP_3			 	#for (i = 0 i < 7 i++)
+LOOP_3
 	lw $t5, $t2($s2)		#load a temporary value (t5) with C[i]
 	la $a0, msg3		#print the following: (" %d", C[i])
 	mov $a1, $t5		#insert that temporary value into the print statement
