@@ -5,10 +5,10 @@
 #data section
 .data
 .align 0
-arrayA: .word 89 19 91 -5 23 -67 31 46 -71 -14 -10 3 67 17 11 -18 43 -73		#load array A with its values
-arrayB: .word 0 0 0 0 0 0 0 0 0 0 0		#load array B with its values
-arrayC: .word 0 0 0 0 0 0 0 		#load array C with its values
-msg0:	.asciiz "Index of the smallest positive number: %d\n""
+arrayA: .word 89, 19, 91, -5, 23, -67, 31, 46, -71, -14, -10, 3, 67, 17, 11, -18, 43, -73		#load array A with its values
+arrayB: .word 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0		#load array B with its values
+arrayC: .word 0, 0, 0, 0, 0, 0, 0 		#load array C with its values
+msg0:	.asciiz "Index of the smallest positive number: %d\n"
 msg1:	.asciiz "Array B:"
 msg2:	.asciiz "Array C:"
 msg3:	.asciiz " %d"
