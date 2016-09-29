@@ -32,7 +32,7 @@ main:
 #/*find the index of the smallest positive number in the array*/
 	
 	li $t2, 0		#set t2 to 0. t2 is i, used as an iterator for this loop
-loopo
+loopo:
 	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with A[i]
 	slt $t6, $t5, $t0		#load a temporary value (t6) with 1 if A[i] is less than min
@@ -43,7 +43,7 @@ loopo
 	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
 	lw $t0, 0($t6)		#load the variable min with A[i]
 	li $t1, $t2		#sets minIndex equal to i
-ifo				#skip to here if the if statement fails
+ifo:				#skip to here if the if statement fails
 	addi $t2, 1		#iterate (i plus 1)
 	slti $t6, $t2, 18 	#set temp value t6 to 1, if i is less than 18
 	beq $1, $t6, loopo		#if t6 is 1, then loop back to the start of loopo
@@ -57,7 +57,7 @@ ifo				#skip to here if the if statement fails
 	li $t3, 0		#load t3 with value j=0 
 	li $t4, 0		#load t4 with value k=0
 	li $t2, 0		#t2 is i, used as an iterator for this loop
-loopw
+loopw:
 	
 	lw $t5, $t2($s0)		#load a temporary value (t5) with A[i]
 	slt $t5, $t5, $zero		#load a temporary value (t5) with 1 if A[i] is greater than 0
@@ -69,7 +69,7 @@ loopw
 	sw $t5, 0($t6)		#sets B[j] equal to A[i]
 	addi $t3, 1		#iterate (j plus 1)
 	
-ifw				#else statement
+ifw:				#else statement
 	add $t6, $t2, $s0		#set t6 equal to the memory location A[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with A[i]
 	add $t6, $t4, $s2		#set t6 equal to the memory location C[k]
@@ -84,7 +84,7 @@ ifw				#else statement
 	jal printf
 	
 	li $t2, 0		#t2 is i, used as an iterator for this loop
-loopt
+loopt:
 	add $t6, $t2, $s1		#set t6 equal to the memory location B[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with B[i]
 	la $a0, msg3		#print the following: (" %d", B[i])
@@ -102,7 +102,7 @@ loopt
 	jal printf
 	
 	li $t2, 0		#t2 is i, used as an iterator for this loop
-loopf
+loopf:
 	add $t6, $t2, $s2		#set t6 equal to the memory location C[i]
 	lw $t5, 0($t6)		#load a temporary value (t5) with C[i]
 	la $a0, msg3		#print the following: (" %d", C[i])
