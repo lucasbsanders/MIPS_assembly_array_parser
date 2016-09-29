@@ -23,20 +23,20 @@ main:
 	la $s2, arrayC		#load register s2 with address of array C
 	
 	li $t0, 100 		#load t0 with min = 100;
-	li $t1, $zero 		#load t1 with minIndex = 0;
-	li $t2, $zero		#load t2 with value i=0 
-	li $t3, $zero		#load t3 with value j=0 
-	li $t4, $zero		#load t4 with value k=0
+	li $t1, 0 		#load t1 with minIndex = 0;
+	li $t2, 0		#load t2 with value i=0 
+	li $t3, 0		#load t3 with value j=0 
+	li $t4, 0		#load t4 with value k=0
 				#t5, t6, t7 are used intermittedly within the program
 	
 #/*find the index of the smallest positive number in the array*/
 	
-	li $t2, $zero		#set t2 to 0. t2 is i, used as an iterator for this loop
+	li $t2, 0		#set t2 to 0. t2 is i, used as an iterator for this loop
 LOOP_0				#for (i = 0; i < 18; i++)
 
 	lw $t5, $t2($s0)		#load a temporary value (t5) with A[i]
 	slt $t6, $t5, $t0		#load a temporary value (t6) with 1 if A[i] is less than min
-	slti $t5, $t5, $zero		#load a temporary value (t5) with 1 if A[i] is greater than 0
+	slt $t5, $t5, $zero		#load a temporary value (t5) with 1 if A[i] is greater than 0
 	and $t5, $t5, $t6		#AND value (t5) with the result of the two previous boolean statements
 	bne $t5, $1, IF_1		#skip the steps in the if statement if t5 (boolean within if statement) is not equal to one
 				#if( A[i] < min && A[i]>0 )
@@ -54,12 +54,12 @@ IF_1				#skip to here if the if statement fails
 	
 #/*Transfer all positive numbers to array B and all negative numbers to array C*/
 
-	li $t3, $zero		#load t3 with value j=0 
-	li $t4, $zero		#load t4 with value k=0
-	li $t2, $zero		#t2 is i, used as an iterator for this loop
+	li $t3, 0		#load t3 with value j=0 
+	li $t4, 0		#load t4 with value k=0
+	li $t2, 0		#t2 is i, used as an iterator for this loop
 LOOP_1				#for (i = 0; i < 18; i++)
 	lw $t5, $t2($s0)		#load a temporary value (t5) with A[i]
-	slti $t5, $t5, $zero		#load a temporary value (t5) with 1 if A[i] is greater than 0
+	slt $t5, $t5, $zero		#load a temporary value (t5) with 1 if A[i] is greater than 0
 	bne $t5, $1, IF_2		#skip the steps in the "if" statement if t5 (boolean within if statement) is not equal to one
 				#if( A[i] > 0 )
 	lw $t5, $t2($s0)		#load a temporary value (t5) with A[i]
@@ -78,7 +78,7 @@ IF_2				#else statement
 	la $a0, msg1		#print the following: ("Array B:")
 	jal printf
 	
-	li $t2, $zero		#t2 is i, used as an iterator for this loop
+	li $t2, 0		#t2 is i, used as an iterator for this loop
 LOOP_2			 	#for (i = 0; i < 11; i++){
 	lw $t5, $t2($s1)		#load a temporary value (t5) with B[i]
 	la $a0, msg3		#print the following: (" %d", B[i])
@@ -95,7 +95,7 @@ LOOP_2			 	#for (i = 0; i < 11; i++){
 	la $a0, msg2            #print the following: ("Array C:")
 	jal printf
 	
-	li $t2, $zero		#t2 is i, used as an iterator for this loop
+	li $t2, 0		#t2 is i, used as an iterator for this loop
 LOOP_3			 	#for (i = 0; i < 7; i++)
 	lw $t5, $t2($s2)		#load a temporary value (t5) with C[i]
 	la $a0, msg3		#print the following: (" %d", C[i])
@@ -109,7 +109,7 @@ LOOP_3			 	#for (i = 0; i < 7; i++)
 	la $a0, msg4		#print the following: ("\n:")
 	jal printf
 	
-	li $t2, $zero		#load t2 with value i=0 
+	li $t2, 0		#load t2 with value i=0 
 	
     	li $v0, 10
     	syscall             # exit
