@@ -5,9 +5,9 @@
 #data section
 .data
 .align 0
-A: .word 89 19 91 -5 23 -67 31 46 -71 -14 -10 3 67 17 11 -18 43 -73		#load array A with its values
-B: .word 0 0 0 0 0 0 0 0 0 0 0		#load array B with its values
-C: .word 0 0 0 0 0 0 0 		#load array C with its values
+arrayA: .word 89 19 91 -5 23 -67 31 46 -71 -14 -10 3 67 17 11 -18 43 -73		#load array A with its values
+arrayB: .word 0 0 0 0 0 0 0 0 0 0 0		#load array B with its values
+arrayC: .word 0 0 0 0 0 0 0 		#load array C with its values
 msg0:	.asciiz "Index of the smallest positive number: %d\n""
 msg1:	.asciiz "Array B:"
 msg2:	.asciiz "Array C:"
@@ -18,9 +18,9 @@ msg4:	.asciiz "\n"
 .align 2
 .globl main
 main:
-	la $s0,A		#load register s0 with address of array A
-	la $s1,B		#load register s1 with address of array B
-	la $s2,C		#load register s2 with address of array C
+	la $s0,arrayA		#load register s0 with address of array A
+	la $s1,arrayB		#load register s1 with address of array B
+	la $s2,arrayC		#load register s2 with address of array C
 	
 	li $t0,100 		#load t0 with min = 100;
 	li $t1,$0 		#load t1 with minIndex = 0;
